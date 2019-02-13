@@ -22,7 +22,9 @@ public class SearchTest {
 
         String keyword = "vase";
 
-        driver.findElement(By.id("search")).sendKeys(keyword + Keys.ENTER);
+        driver.findElement(By.className("input-text")).sendKeys(keyword + Keys.ENTER);
+
+        //driver.findElement(By.id("search")).sendKeys(keyword + Keys.ENTER);
         //driver.findElement(By.linkText("WOMEN")).click();
         //driver.findElement(By.partialLinkText("OMEN")).click();
 
@@ -32,9 +34,8 @@ public class SearchTest {
         for (WebElement container : productNameContainers) {
             String productName = container.getText();
 
-         //  System.out.println(productName);
-
-            assertThat("Some of the product names do not contain the searched keyword",
+             System.out.println(productName);
+             assertThat("Some of the product names do not contain the searched keyword",
                     productName, containsString(keyword.toUpperCase()));
         }
 
